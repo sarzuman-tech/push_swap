@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_helper.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sarzuman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: meharuty <meharuty@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 20:41:20 by sarzuman          #+#    #+#             */
-/*   Updated: 2026/02/27 15:37:48 by sarzuman         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:05:47 by meharuty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ long	ft_helper(char a, va_list *args)
 		write (1, "%", 1);
 		count++;
 	}
+	if (a == 'm')
+		ft_print_double(va_arg(*args, double));
 	return (count);
 }

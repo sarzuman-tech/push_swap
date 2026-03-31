@@ -26,7 +26,6 @@ long abo(const char *str)
     return (flag * result);
 }
 
-
 int check_one_arg (char *ptr)
 {
     int j;
