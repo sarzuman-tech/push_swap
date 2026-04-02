@@ -10,7 +10,7 @@ void sa_logic (t_list **stake_a)
     i  = ft_lstsize(*stake_a);
     if (i < 2)
     {
-        exit(0);
+        return ;
     }
     first = *stake_a;
     second = (*stake_a)->next;
@@ -34,7 +34,7 @@ void sb_logic (t_list **stake_b)
     i  = ft_lstsize(*stake_b);
     if (i < 2)
     {
-        exit(0);
+        return ;
     }
     
     first = *stake_b;

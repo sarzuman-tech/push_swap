@@ -64,4 +64,7 @@ int ft_bench_search(char **arr);
 t_config *ft_config_init(char **arr);
 size_t	ft_strlen(const char *c);
 
+
+void buble_sort(t_list **stake);
+
 #endif
