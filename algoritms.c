@@ -1,34 +1,27 @@
 #include "push_swap.h"
 
-void buble_sort(t_list **stake)
+void simple_sort(t_list **stake_a)
 {
-    int swapped;
-    t_list *current;
-    t_list *boundary;
+    t_list *stake_b;
+    int size;
+    int small;
 
-    if (!stake || !*stake || !(*stake)->next)
-        return;
+    stake_b = NULL;
+    size = stack_size(stake_a);
+    small = 0;
 
-    boundary = NULL;
-    swapped = 1;
-
-    while (swapped)
+    while (*stake_a)
     {
-        swapped = 0;
-        current = *stake;
-
-        while (current->next != boundary)
-        {
-            if (current->content > current->next->content)
-            {
-                sa(stake);
-                swapped = 1;
-                // после sa нужно начать с начала
-                current = *stake;
-                continue;
-            }
-            current = current->next;
-        }
-        boundary = current;
+        small = find_min_position(*stake_a);
+        if (small <= size / 2)
+            while(small-- > 0)
+                ra(stake_a);
+        else
+            while(small++ < size)
+                rra(stake_a);
+        pb(stake_a, &stake_b);
+        size--;
     }
+    while (stake_b)
+        pa(&stake_b, stake_a);
 }

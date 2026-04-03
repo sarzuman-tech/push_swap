@@ -65,6 +65,10 @@ t_config *ft_config_init(char **arr);
 size_t	ft_strlen(const char *c);
 
 
-void buble_sort(t_list **stake);
+void simple_sort(t_list **stake_a);
+int is_sort(t_list **stake_a);
+
+int stack_size(t_list **stack);
+int find_min_position(t_list *stack);
 
 #endif

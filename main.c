@@ -4,6 +4,7 @@ int main (int argc, char **argv)
 {
     t_list *stake_a = NULL;
     // t_list *stake_b = NULL;
+    // t_list *stake_b = NULL;
     char *arr;
     char **arr_split;
     int i;
@@ -19,7 +20,18 @@ int main (int argc, char **argv)
         i++;
     }
 
-    buble_sort(&stake_a);
+    // simple_sort(&stake_a, &stake_b);
+
+    // while (stake_a)
+    // {
+    //     ft_printf("%d\n", stake_a->content);
+
+    //     stake_a = stake_a->next;
+    // }
+    
+    ft_printf("%d", find_min_position(stake_a));
+
+    simple_sort(&stake_a);
 
     while (stake_a)
     {
@@ -27,15 +39,6 @@ int main (int argc, char **argv)
 
         stake_a = stake_a->next;
     }
-    
-    
-
-    
-    
-
-
-
-    
 
     return 0;
 }
