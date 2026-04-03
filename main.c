@@ -20,6 +20,13 @@ int main (int argc, char **argv)
     }
 
     buble_sort(&stake_a);
+
+    while (stake_a)
+    {
+        ft_printf("%d\n", stake_a->content);
+
+        stake_a = stake_a->next;
+    }
     
     
 

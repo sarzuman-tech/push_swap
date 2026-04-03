@@ -2,22 +2,33 @@
 
 void buble_sort(t_list **stake)
 {
+    int swapped;
     t_list *current;
-    t_list *last = NULL;
+    t_list *boundary;
 
-    current = *stake;
-    int sorted = 1;
+    if (!stake || !*stake || !(*stake)->next)
+        return;
 
-    while (current->next != last)
+    boundary = NULL;
+    swapped = 1;
+
+    while (swapped)
     {
-        if (current->content > current->next->content)
+        swapped = 0;
+        current = *stake;
+
+        while (current->next != boundary)
         {
-            sa(stake);
-            current = *stake;
+            if (current->content > current->next->content)
+            {
+                sa(stake);
+                swapped = 1;
+                // после sa нужно начать с начала
+                current = *stake;
+                continue;
+            }
+            current = current->next;
         }
-
-        
-
+        boundary = current;
     }
-
 }
