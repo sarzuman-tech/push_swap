@@ -1,13 +1,14 @@
 #include "push_swap.h"
 
-int main ()
+int main (int argc ,char **argv)
 {
-    char *arr[] = {"16", "15", "--simple" ,"18", "--bench"};
-    t_config *data;
+    if (argc < 2)
+        return 0;
+    char    *arr;
 
-    data = ft_config_init(arr);
+    arr = finished_array(argc, argv);
     
-    ft_printf("%s\n %d", data->strategy, data->config_count);
+    arr_int_to_lst(arr);
 
     return 0;
 }

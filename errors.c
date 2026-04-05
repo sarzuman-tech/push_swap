@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-long abo(const char *str)
+int abo(const char *str, long *res)
 {
     long result;
     int flag;
@@ -11,19 +11,21 @@ long abo(const char *str)
     i = 0;
     while (str[i] == ' ' || str[i] == '\t')
         i++;
-    if (str[i] == '-')
+    if (str[i] == '-' || str[i] == '+')
     {
-        flag = -1;
+        if (str[i] == '-')
+            flag = -1;
         i++;
     }
-    if (str[i] == '+')
-        i++;
     while (str[i] >= '0' && str[i] <= '9')
     {
         result = result * 10 + (str[i] - '0');
+        if ((flag == 1 && result > INT_MAX) || (flag == -1 && -result < INT_MIN))
+			return (0);
         i++;
     }
-    return (flag * result);
+    (*res) = result * flag;
+    return (1);
 }
 
 int check_one_arg (char *ptr)
@@ -47,16 +49,18 @@ int check_one_arg (char *ptr)
     return (1);
 }
 
-int check_overflow(char *ptr)
+static int check_duplicate(int *arr, int size, int value)
 {
-    long res;
+    int i;
 
-    res = abo(ptr);
-
-    if (res > INT_MAX || res < INT_MIN)
-        return (0);
-    else
-        return (1);
+    i = 0;
+    while (i < size)
+	{
+		if (arr[i] == value)
+			return (1);
+		i++;
+	}
+    return (0);
 }
 
 void free_all(char **ptr)
@@ -71,23 +75,36 @@ void free_all(char **ptr)
     free(ptr);
 }
 
-void error_checker(char *ptr)
+int *parse_args(char **arr, int *size)
 {
-    char **arr;
+    long res;
+    int *parsed;
     int i;
+
     i = 0;
-
-    arr = ft_split(ptr, ' ');
-
+    parsed = malloc(sizeof(int) * (*size));
+    if(!parsed || !arr)
+        return (0);
     while (arr[i])
     {
-        if (!check_one_arg(arr[i]) || !check_overflow(arr[i]))
+        res = 0;
+        if (!check_one_arg(arr[i]) || !abo(arr[i], &res))
         {
             write(2, "Error\n", 6);
             free_all(arr);
+            free(parsed);
+            exit(1);
+        }
+        parsed[i] = (int)res;
+        if (check_duplicate(parsed, i, parsed[i]))
+        {
+            write(2, "Error\n", 6);
+            free_all(arr);
+            free(parsed);
             exit(1);
         }
         i++;
     }
     free_all(arr);
+    return(parsed);
 }
