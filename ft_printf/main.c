@@ -1,5 +1,5 @@
 int main()
 {
-    ft_printf("%m\n", 0.58);
-    ft_printf("%d", 10);
+    double a = 15.58;
+    ft_printf("%m\n", a);
 }
