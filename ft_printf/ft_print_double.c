@@ -2,11 +2,9 @@
 
 void ft_print_double(double n)
 {
-	int i;
 	int k;
 	double p;
 
-	i = 0;
 	k = (int)n;
 	p = (n * 100) - ((double)k * 100);
 	ft_printnbr(k);

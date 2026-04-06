@@ -26,7 +26,7 @@ char    *finished_array(int argc, char **argv);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
 int		ft_atoi(const char *str);
-long	abo(const char *arr);
+int		abo(const char *arr, long *res);
 void	error_checker(char *ptr);
 void	free_all(char **ptr);
 int		check_overflow(char *ptr);
@@ -56,12 +56,20 @@ void rrr(t_list **stake_a, t_list **stake_b);
 
 int	ft_printf(const char *format, ...);
 int	ft_lstsize(t_list *lst);
+t_list *parse_input(int argc, char **argv);
+int is_flag(char *arg);
+int *parse_args(char **arr, int *size);
+t_list *arr_to_list(int *arr, int size);
+void free_list(t_list *lst);
 
 
+t_list *ft_lstnew(void *content);
+void ft_lstadd_back(t_list **lst, t_list *new);
 int	ft_strcmp(const char *a, const char *b);
 const char *ft_strategy_search(char **arr);
 int ft_bench_search(char **arr);
 t_config *ft_config_init(char **arr);
 size_t	ft_strlen(const char *c);
-
+void debug_config(t_config *cfg);
+void debug_list(t_list *lst);
 #endif

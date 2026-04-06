@@ -1,5 +1,15 @@
 #include "push_swap.h"
 
+int is_flag(char *arg)
+{
+    if (!ft_strcmp(arg, "--simple")
+        || !ft_strcmp(arg, "--medium")
+        || !ft_strcmp(arg, "--complex")
+        || !ft_strcmp(arg, "--bench"))
+        return (1);
+    return (0);
+}
+
 const char *ft_strategy_search(char **arr)
 {
     int i;
@@ -27,7 +37,7 @@ int ft_bench_search(char **arr)
     int i;
 
     i = 0;
-    while (arr[i] && i < 2)
+    while (arr[i])
     {
         if (ft_strcmp(arr[i], "--bench"))
             return (1);
@@ -43,6 +53,8 @@ t_config *ft_config_init(char **arr)
     
     config_count = 0;
     config_data = malloc((sizeof(t_config)));
+    if (!config_data)
+        return NULL;
 
     config_data->strategy = (char *)ft_strategy_search(arr);
     config_data->bench = ft_bench_search(arr);

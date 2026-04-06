@@ -1,14 +1,15 @@
 #include "push_swap.h"
 
-int main (int argc ,char **argv)
+int main(int argc, char **argv)
 {
-    if (argc < 2)
-        return 0;
-    char    *arr;
+    t_config *cfg;
+    t_list *list;
 
-    arr = finished_array(argc, argv);
-    
-    arr_int_to_lst(arr);
+    cfg = ft_config_init(argv + 1);
+    debug_config(cfg);
+
+    list = parse_input(argc, argv);
+    debug_list(list);
 
     return 0;
 }
