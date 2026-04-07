@@ -8,7 +8,9 @@ int main(int argc, char **argv)
     cfg = ft_config_init(argv + 1);
     debug_config(cfg);
 
-    list = parse_input(argc, argv);
+   char *str = finished_array(argc, argv);
+    list = arr_int_to_lst(str);
+    free(str);
     debug_list(list);
 
     return 0;

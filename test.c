@@ -2,10 +2,10 @@
 
 int is_flag(char *arg)
 {
-    if (!ft_strcmp(arg, "--simple")
-        || !ft_strcmp(arg, "--medium")
-        || !ft_strcmp(arg, "--complex")
-        || !ft_strcmp(arg, "--bench"))
+    if (ft_strcmp(arg, "--simple")
+        || ft_strcmp(arg, "--medium")
+        || ft_strcmp(arg, "--complex")
+        || ft_strcmp(arg, "--bench"))
         return (1);
     return (0);
 }
@@ -13,20 +13,18 @@ int is_flag(char *arg)
 const char *ft_strategy_search(char **arr)
 {
     int i;
-    int j;
     i = 0;
-    j = 2;
     if (!arr)
         return NULL;
 
-    while (i < j)
+    while (arr[i])
     {
-            if (ft_strcmp(arr[i], "--simple"))
-                return ("simple");
-            if (ft_strcmp(arr[i], "--medium"))
-                return ("medium");
-            if (ft_strcmp(arr[i], "--complex"))
-                return ("complex");
+        if (ft_strcmp(arr[i], "--simple"))
+            return ("simple");
+        if (ft_strcmp(arr[i], "--medium"))
+            return ("medium");
+        if (ft_strcmp(arr[i], "--complex"))
+            return ("complex");
         i++;
     }
     return(NULL);

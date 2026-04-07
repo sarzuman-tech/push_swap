@@ -8,7 +8,7 @@ void debug_list(t_list *lst)
 
     while (tmp)
     {
-        printf("%d ", *(int *)tmp->content);
+        printf("%d ", tmp->content);
         tmp = tmp->next;
     }
 }
@@ -18,10 +18,10 @@ void debug_config(t_config *cfg)
     printf("CONFIG\n");
 
     if (cfg->strategy)
-        printf("%s\n", cfg->strategy);
+        printf("strategy = %s\n", cfg->strategy);
     else
         printf("NULL\n");
 
-    printf("%d\n", cfg->bench);
+    printf("bench = %d\n", cfg->bench);
     printf("count = %d\n", cfg->config_count);
 }

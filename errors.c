@@ -37,7 +37,7 @@ int check_one_arg (char *ptr)
     if (ptr[j] == '-' || ptr[j] == '+')
         j++;
     if (!ptr[j])
-        return 0;
+        return (0);
 
     while (ptr[j])
     {
@@ -45,22 +45,18 @@ int check_one_arg (char *ptr)
             return (0);
         j++;
     }
-    
     return (1);
 }
 
-static int check_duplicate(int *arr, int size, int value)
+int check_duplicate(t_list *list, int value)
 {
-    int i;
-
-    i = 0;
-    while (i < size)
-	{
-		if (arr[i] == value)
-			return (1);
-		i++;
-	}
-    return (0);
+    while (list)
+    {
+        if (list->content == value)
+            return 1;
+        list = list->next;
+    }
+    return 0;
 }
 
 void free_all(char **ptr)
@@ -73,38 +69,4 @@ void free_all(char **ptr)
         free(ptr[m++]);
     }
     free(ptr);
-}
-
-int *parse_args(char **arr, int *size)
-{
-    long res;
-    int *parsed;
-    int i;
-
-    i = 0;
-    parsed = malloc(sizeof(int) * (*size));
-    if(!parsed || !arr)
-        return (0);
-    while (arr[i])
-    {
-        res = 0;
-        if (!check_one_arg(arr[i]) || !abo(arr[i], &res))
-        {
-            write(2, "Error\n", 6);
-            free_all(arr);
-            free(parsed);
-            exit(1);
-        }
-        parsed[i] = (int)res;
-        if (check_duplicate(parsed, i, parsed[i]))
-        {
-            write(2, "Error\n", 6);
-            free_all(arr);
-            free(parsed);
-            exit(1);
-        }
-        i++;
-    }
-    free_all(arr);
-    return(parsed);
 }

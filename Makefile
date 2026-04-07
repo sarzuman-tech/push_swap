@@ -2,7 +2,8 @@ NAME = push_swap
 CC = cc
 CFLAG = -Wall -Wextra -Werror
 
-SRCS = main.c finished_array.c errors.c list_manipulations.c swap.c push.c rotate.c revers_rotate.c test.c ft_strcmp.c
+SRCS = main.c finished_array.c errors.c list_manipulations.c swap.c push.c rotate.c \
+ revers_rotate.c test.c ft_strcmp.c debug.c
 
 OBJS = $(SRCS:.c=.o)
 

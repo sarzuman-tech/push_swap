@@ -10,7 +10,7 @@
 
 typedef struct s_list {
 	
-	long content;
+	int content;
 	struct s_list *next;
 	struct s_list *prev;
 } t_list;
@@ -56,14 +56,12 @@ void rrr(t_list **stake_a, t_list **stake_b);
 
 int	ft_printf(const char *format, ...);
 int	ft_lstsize(t_list *lst);
-t_list *parse_input(int argc, char **argv);
 int is_flag(char *arg);
-int *parse_args(char **arr, int *size);
-t_list *arr_to_list(int *arr, int size);
+t_list *arr_int_to_lst(char *p);
 void free_list(t_list *lst);
 
-
-t_list *ft_lstnew(void *content);
+int check_duplicate(t_list *list, int value);
+t_list *ft_lstnew(int content);
 void ft_lstadd_back(t_list **lst, t_list *new);
 int	ft_strcmp(const char *a, const char *b);
 const char *ft_strategy_search(char **arr);

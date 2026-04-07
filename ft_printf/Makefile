@@ -7,7 +7,7 @@ LIBFT_PATH_LIB = ../libft/libft.a
 LIBFT_DIR = ../libft
 
 SRC = ft_helper.c ft_printf.c ft_printnbr.c ft_printchr.c ft_printstr.c \
-ft_print_adr.c ft_print_unsigned.c ft_printx_x.c ft_print_double.c debug.c
+ft_print_adr.c ft_print_unsigned.c ft_printx_x.c ft_print_double.c
 OBJ = $(SRC:.c=.o)
 
 %.o:%.c

@@ -42,49 +42,47 @@ char *finished_array(int argc, char **argv)
     return (arr);
 }
 
-t_list	*arr_int_to_lst(char *p)
+t_list *arr_int_to_lst(char *p)
 {
-	char **arr;
-	int *arr_int;
-	t_list *a;
-	int j = 0;
+    char **arr;
+    t_list *list;
+    int i;
 
-	arr = ft_split(p, ' ');
-	while(arr[j])
-		j++;
-	arr_int = parse_args(arr, &j);
-	a = arr_to_list(arr_int, j);
-//	ft_prt_lst(a);
-	free(arr_int);
-	return (a);
-}
+    arr = ft_split(p, ' ');
+    if (!arr)
+        return NULL;
 
-t_list	*arr_to_list(int *arr, int size)
-{
-	t_list *list;
-	t_list *node;
-	int	i;
-	int *num;
+    list = NULL;
+    i = 0;
 
-	list = NULL;	
-	i = 0;
-	while (i < size)
-	{
-		num = malloc(sizeof(int));
-		if (!num)
-    		return NULL;
-		*num = arr[i];
-		node = ft_lstnew(num);
-		if (!node)
+    while (arr[i])
+    {
+		long value;
+
+        if (!check_one_arg(arr[i]) || !abo(arr[i], &value))
 		{
-			free(num);
-			free_list(list);
-			return NULL;
+			write(2, "Error\n", 6);
+    		free_all(arr);
+    		free_list(list);
+    		exit (1);
 		}
-		ft_lstadd_back(&list, node);
-		i++;
-	}
-	return (list);
+		if (check_duplicate(list, (int)value))
+        {
+            write(2, "Error\n", 6);
+            free_all(arr);
+            free_list(list);
+            exit (1);
+        }
+        t_list *node = ft_lstnew((int)value);
+        if (!node)
+            return (free_all(arr), free_list(list), NULL);
+
+        ft_lstadd_back(&list, node);
+        i++;
+    }
+
+    free_all(arr);
+    return list;
 }
 
 void free_list(t_list *lst)
@@ -95,7 +93,6 @@ void free_list(t_list *lst)
     {
         tmp = lst;
         lst = lst->next;
-        free(tmp->content);
         free(tmp);
     }
 }
