@@ -1,70 +1,64 @@
 #include "push_swap.h"
 
-void sa_logic (t_list **stake_a)
+void	sa_logic(t_list **stake_a)
 {
-    int i;
-    t_list *first;
-    t_list *second;
-    t_list *c;
+	int		i;
+	t_list	*first;
+	t_list	*second;
+	t_list	*c;
 
-    i  = ft_lstsize(*stake_a);
-    if (i < 2)
-    {
-        exit(0);
-    }
-    first = *stake_a;
-    second = (*stake_a)->next;
-    c = second->next;
-
-    second->next = first;
-    first->next = c;
-    first->prev = second;
-    second->prev = NULL;
-
-    *stake_a = second;
+	i = ft_lstsize_ps(*stake_a);
+	if (i < 2)
+		return ;
+	first = *stake_a;
+	second = (*stake_a)->next;
+	c = second->next;
+	second->next = first;
+	first->next = c;
+	first->prev = second;
+	second->prev = NULL;
+	if (c)
+		c->prev = first;
+	*stake_a = second;
 }
 
-void sb_logic (t_list **stake_b)
+void	sb_logic(t_list **stake_b)
 {
-    int i;
-    t_list *first;
-    t_list *second;
-    t_list *c;
-    
-    i  = ft_lstsize(*stake_b);
-    if (i < 2)
-    {
-        exit(0);
-    }
-    
-    first = *stake_b;
-    second = (*stake_b)->next;
-    c = second->next;
+	int		i;
+	t_list	*first;
+	t_list	*second;
+	t_list	*c;
 
-    second->next = first;
-    first->next = c;
-    first->prev = second;
-    second->prev = NULL;
-
-    *stake_b = second;
+	i = ft_lstsize_ps(*stake_b);
+	if (i < 2)
+		return ;
+	first = *stake_b;
+	second = (*stake_b)->next;
+	c = second->next;
+	second->next = first;
+	first->next = c;
+	first->prev = second;
+	second->prev = NULL;
+	if (c)
+		c->prev = first;
+	*stake_b = second;
 }
 
-void ss(t_list **stake_a, t_list **stake_b)
+void	ps_sa(t_ps *ps)
 {
-    sa_logic(stake_a);
-    sb_logic(stake_b);
-
-    ft_printf("%s\n", "ss");
+	sa_logic(&ps->a);
+	ps_op_emit(ps, OP_SA, "sa");
 }
 
-void sa(t_list **stake_a)
+void	ps_sb(t_ps *ps)
 {
-    sa_logic(stake_a);
-    ft_printf("%s\n", "sa");
+	sb_logic(&ps->b);
+	ps_op_emit(ps, OP_SB, "sb");
 }
 
-void sb(t_list **stake_b)
+void	ps_ss(t_ps *ps)
 {
-    sb_logic(stake_b);
-    ft_printf("%s\n", "sb");
+	sa_logic(&ps->a);
+	sb_logic(&ps->b);
+	ps_op_emit(ps, OP_SS, "ss");
 }
