@@ -11,6 +11,7 @@
 typedef struct s_list {
 	
 	int content;
+	int index;
 	struct s_list *next;
 	struct s_list *prev;
 } t_list;
@@ -70,4 +71,8 @@ t_config *ft_config_init(char **arr);
 size_t	ft_strlen(const char *c);
 void debug_config(t_config *cfg);
 void debug_list(t_list *lst);
+void indexing_list(t_list *a);
+int find_max_position(t_list *b);
+int find_max_index(t_list *b);
+void chunk_sort(t_list **a);
 #endif

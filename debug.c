@@ -8,7 +8,8 @@ void debug_list(t_list *lst)
 
     while (tmp)
     {
-        printf("%d ", tmp->content);
+        printf("content = %d\n ", tmp->content);
+        printf("index = %d\n ", tmp->index);
         tmp = tmp->next;
     }
 }

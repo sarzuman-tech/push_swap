@@ -11,6 +11,11 @@ int main(int argc, char **argv)
    char *str = finished_array(argc, argv);
     list = arr_int_to_lst(str);
     free(str);
+    indexing_list(list);
+    debug_list(list);
+    int a = find_max_position(list);
+    printf("pos = %d", a);
+    chunk_sort(&list);
     debug_list(list);
 
     return 0;
