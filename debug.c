@@ -8,8 +8,8 @@ void debug_list(t_list *lst)
 
     while (tmp)
     {
-        printf("content = %d\n ", tmp->content);
-        printf("index = %d\n ", tmp->index);
+        //printf("content = %d\n ", tmp->content);
+        //printf("index = %d\n ", tmp->index);
         tmp = tmp->next;
     }
 }
@@ -18,10 +18,10 @@ void debug_config(t_config *cfg)
 {
     printf("CONFIG\n");
 
-    if (cfg->strategy)
-        printf("strategy = %s\n", cfg->strategy);
-    else
-        printf("NULL\n");
+    //if (cfg->strategy)
+        //printf("strategy = %s\n", cfg->strategy);
+    //else
+        //printf("NULL\n");
 
     printf("bench = %d\n", cfg->bench);
     printf("count = %d\n", cfg->config_count);
