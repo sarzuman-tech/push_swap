@@ -70,6 +70,11 @@ void	strategy_medium(t_ps *ps)
 	int	m;
 
 	n = ft_lstsize_ps(ps->a);
+	if (n <= 10)
+	{
+		strategy_simple(ps);
+		return ;
+	}
 	chunk = (int)sqrt((double)n);
 	if (chunk < 1)
 		chunk = 1;

@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by sarzuman, <login2>.*
+*This project has been created as part of the 42 curriculum by sarzuman, meharuty.*
 
 # push_swap (learner base + completion)
 
@@ -52,5 +52,5 @@ AI was used to wire `main`, parsing, strategies, `bench`, and `checker` on top o
 
 ## Contribution
 
-- \<login1\>: list nodes, stack moves (`swap` / `push` / `rotate`), `ft_strcmp`, `errors`.
-- \<login2\>: `parse`, strategies, `bench`, `checker`, integration.
+- `sarzuman`: list nodes, stack moves (`swap` / `push` / `rotate`), `ft_strcmp`, `errors`.
+- `meharuty`: `parse`, strategies, `bench`, `checker`, integration.

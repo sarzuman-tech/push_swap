@@ -24,6 +24,11 @@ void	strategy_complex(t_ps *ps)
 	int	n;
 
 	n = ft_lstsize_ps(ps->a);
+	if (n <= 10)
+	{
+		strategy_simple(ps);
+		return ;
+	}
 	max_bits = 0;
 	while (((n - 1) >> max_bits) != 0)
 		max_bits++;
