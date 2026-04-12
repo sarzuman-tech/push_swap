@@ -24,7 +24,7 @@ void	strategy_complex(t_ps *ps)
 	int	n;
 
 	n = ft_lstsize_ps(ps->a);
-	if (n <= 10)
+	if (n <= 5)
 	{
 		strategy_simple(ps);
 		return ;

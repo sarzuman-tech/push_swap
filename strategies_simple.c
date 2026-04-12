@@ -44,18 +44,38 @@ static void	simple_rotate_min(t_ps *ps, int idx, int sz)
 	}
 }
 
+void	strategy_simple_3_hardcode(t_ps *ps)
+{
+	int	idx;
+
+	idx = find_min_index(ps->a);
+	if (idx == 1)
+		ps_ra(ps);
+	else if (idx == 2)
+		ps_rra(ps);
+	ps_pb(ps);
+	if (ps->a->content > ps->a->next->content)
+		ps_sa(ps);
+	ps_pa(ps);
+}
+
 void	strategy_simple(t_ps *ps)
 {
 	int	idx;
 	int	sz;
 
-	while (ps->a)
+	sz = ft_lstsize_ps(ps->a);
+	if (sz == 3)
+		strategy_simple_3_hardcode(ps);
+	else
 	{
-		sz = ft_lstsize_ps(ps->a);
-		idx = find_min_index(ps->a);
-		simple_rotate_min(ps, idx, sz);
-		ps_pb(ps);
+		while (ps->a)
+		{
+			idx = find_min_index(ps->a);
+			simple_rotate_min(ps, idx, sz);
+			ps_pb(ps);
+		}
+		while (ps->b)
+			ps_pa(ps);
 	}
-	while (ps->b)
-		ps_pa(ps);
 }

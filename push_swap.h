@@ -103,6 +103,7 @@ void		strategy_medium(t_ps *ps);
 void		strategy_complex(t_ps *ps);
 void		strategy_adaptive(t_ps *ps, double disorder);
 void		print_bench(t_ps *ps, double disorder);
+void		strategy_simple_3_hardcode(t_ps *ps);
 
 int			apply_instruction(t_ps *ps, const char *line);
 int			read_line_stdin(char **line);
