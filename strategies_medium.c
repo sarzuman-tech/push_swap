@@ -1,5 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   strategies_medium.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: meharuty <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/13 15:03:48 by meharuty          #+#    #+#             */
+/*   Updated: 2026/04/13 15:03:50 by meharuty         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <math.h>
+
+static int	ft_sqrt(int nb)
+{
+	int	i;
+	int	j;
+	int	n;
+
+	i = 1;
+	j = 0;
+	n = nb;
+	if (nb <= 0)
+		return (0);
+	while (n - i >= 0)
+	{
+		n = n - i;
+		i = i + 2;
+		j++;
+	}
+	return (j);
+}
 
 static int	find_max_index(t_list *b)
 {
@@ -70,12 +101,12 @@ void	strategy_medium(t_ps *ps)
 	int	m;
 
 	n = ft_lstsize_ps(ps->a);
-	if (n <= 5)
+	if (n <= 6)
 	{
 		strategy_simple(ps);
 		return ;
 	}
-	chunk = (int)sqrt((double)n);
+	chunk = ft_sqrt((double)n);
 	if (chunk < 1)
 		chunk = 1;
 	limit = chunk;

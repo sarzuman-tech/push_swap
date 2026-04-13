@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: meharuty <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/13 15:00:26 by meharuty          #+#    #+#             */
+/*   Updated: 2026/04/13 15:00:29 by meharuty         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -37,13 +49,6 @@ typedef enum e_strat
 	STRAT_COMPLEX,
 	STRAT_ADAPTIVE
 }	t_strat;
-
-struct	s_rlbuf
-{
-	char	*b;
-	int		c;
-	int		l;
-};
 
 typedef struct s_ps
 {
